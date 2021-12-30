@@ -10,32 +10,43 @@ let pwSpecial = ["!", "#", "$", "%", "&", "@", "~", "-", "_", "?", "+", "*", "="
 function generatePassword() {
   // assign length to password
   let pwLength = Number(prompt("how long would you like your password? (min: 8, max: 128)"));
-  let pwPool = []; // this will end up being entire pool of available characters
+  let pwPool = ["a"]; // this will become the entire pool of available characters
 
   // select desired character types
   if (pwLength >= 8 && pwLength <= 128) {
     let yesLower = confirm("Would you like your password to include lowercase letters?");
+    // [user wants lowercase] = concat lcLetters into pwPool
+    if (yesLower === true) {
+      pwPool = pwPool.concat(lcLetters);
+    }
     let yesUpper = confirm("would you like your password to include UPPERCASE letters?");
+    // [user wants uppercase] = concat ucLetters into pwPool
+    if (yesUpper === true) {
+      pwPool = pwPool.concat(ucLetters);
+    }
     let yesNumber = confirm("Would you like your password to include numb3r5?");
+    // [user wants numbers] = concat pwNumbers into pwPool
+    if (yesNumber === true) {
+      pwPool = pwPool.concat(pwNumbers);
+    }
     let yesSpecial = confirm("would you like your password to inclide $pec!@l characters?");
+    // [user wants special chars] = concat pwSpecial into pwPool
+    if (yesSpecial === true) {
+      pwPool = pwPool.concat(pwSpecial);
+    }
   } else {
     alert("Invalid entry, please enter a number between 8 - 128 for your password length");
     return "";
   }
 
-  if (yesLower) {
-    // concat lowercase into pwPool
-  }
-  if (yesUpper) {
-  }
+  let pwFinal = []; // this will be the user's final password
   // loop through variables
-
   for (let i = 0; i < pwLength; i++) {
-    someValue.push(pwPool[i]); //replace i with some math function
+    pwFinal.push(pwPool[Math.floor(Math.random() * (pwPool.length - 1))]); //replace i with random math function
+    console.log(Math.floor(Math.random() * (pwPool.length - 1)));
   }
-
   // convert password to string
-  return someValue.join("");
+  return pwFinal.join("");
 }
 
 // Write password to the #password input
