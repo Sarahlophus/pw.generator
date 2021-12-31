@@ -39,11 +39,11 @@ function generatePassword() {
     return "";
   }
 
-  let pwFinal = []; // this will be the user's final password
+  let pwFinal = [""]; // this will be the user's final password
   // loop through variables
-  for (let i = 0; i <= pwLength; i++) {
-    pwFinal.push(pwPool[Math.floor(Math.random() * pwPool.length - 1)]); //replace i with random math function
-    // console.log(Math.floor(Math.random() * (pwPool.length - 1)));
+  for (let i = 0; i < pwLength; i++) {
+    pwFinal.push(pwPool[Math.floor(Math.random() * pwPool.length)]); //replace i with random math function
+    console.log(Math.floor(Math.random() * pwPool.length));
   }
   // convert password to string
   return pwFinal.join("");
