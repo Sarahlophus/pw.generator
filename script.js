@@ -10,7 +10,7 @@ let pwSpecial = ["!", "#", "$", "%", "&", "@", "~", "-", "_", "?", "+", "*", "="
 function generatePassword() {
   // assign length to password
   let pwLength = Number(prompt("how long would you like your password? (min: 8, max: 128)"));
-  let pwPool = ["a"]; // this will become the entire pool of available characters
+  let pwPool = [""]; // this will become the entire pool of available characters
 
   // select desired character types
   if (pwLength >= 8 && pwLength <= 128) {
@@ -41,9 +41,9 @@ function generatePassword() {
 
   let pwFinal = []; // this will be the user's final password
   // loop through variables
-  for (let i = 0; i < pwLength; i++) {
-    pwFinal.push(pwPool[Math.floor(Math.random() * (pwPool.length - 1))]); //replace i with random math function
-    console.log(Math.floor(Math.random() * (pwPool.length - 1)));
+  for (let i = 0; i <= pwLength; i++) {
+    pwFinal.push(pwPool[Math.floor(Math.random() * pwPool.length - 1)]); //replace i with random math function
+    // console.log(Math.floor(Math.random() * (pwPool.length - 1)));
   }
   // convert password to string
   return pwFinal.join("");
