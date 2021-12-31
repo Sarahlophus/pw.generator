@@ -15,35 +15,35 @@ function generatePassword() {
   // select desired character types
   if (pwLength >= 8 && pwLength <= 128) {
     let yesLower = confirm("Would you like your password to include lowercase letters?");
-    // [user wants lowercase] = concat lcLetters into pwPool
+    // [user wants lowercase] = merge lcLetters into pwPool
     if (yesLower === true) {
       pwPool = pwPool.concat(lcLetters);
     }
     let yesUpper = confirm("would you like your password to include UPPERCASE letters?");
-    // [user wants uppercase] = concat ucLetters into pwPool
+    // [user wants uppercase] = merge ucLetters into pwPool
     if (yesUpper === true) {
       pwPool = pwPool.concat(ucLetters);
     }
     let yesNumber = confirm("Would you like your password to include numb3r5?");
-    // [user wants numbers] = concat pwNumbers into pwPool
+    // [user wants numbers] = merge pwNumbers into pwPool
     if (yesNumber === true) {
       pwPool = pwPool.concat(pwNumbers);
     }
     let yesSpecial = confirm("would you like your password to inclide $pec!@l characters?");
-    // [user wants special chars] = concat pwSpecial into pwPool
+    // [user wants special chars] = merge pwSpecial into pwPool
     if (yesSpecial === true) {
       pwPool = pwPool.concat(pwSpecial);
     }
   } else {
+    //error message if user does not meet password preference criteria
     alert("Invalid entry, please enter a number between 8 - 128 for your password length");
     return "";
   }
 
   let pwFinal = []; // this will be the user's final password
-  // loop through variables
+  // loop through variables and add random to pwPool
   for (let i = 0; i < pwLength; i++) {
-    pwFinal.push(pwPool[Math.floor(Math.random() * pwPool.length)]); //replace i with random math function
-    console.log(Math.floor(Math.random() * pwPool.length));
+    pwFinal.push(pwPool[Math.floor(Math.random() * pwPool.length)]);
   }
   // convert password to string
   return pwFinal.join("");
